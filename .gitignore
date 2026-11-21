@@ -1,0 +1,15 @@
+# Окружения
+.venv/
+venv/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+
+# Инструменты
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Идея
+.idea/
