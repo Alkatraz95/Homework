@@ -1,35 +1,47 @@
-"""Модуль с классами Product и Category для домашнего задания 14.1."""
+"""Точка входа: демонстрация работы классов Product и Category."""
+
+from src.category import Category
+from src.product import Product
 
 
-class Product:
-    """Класс товара магазина."""
+if __name__ == "__main__":
+    product1 = Product(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5
+    )
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
 
-    name: str
-    description: str
-    price: float
-    quantity: int
+    category1 = Category(
+        "Смартфоны",
+        "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+        [product1, product2, product3],
+    )
 
-    def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
-        self.price = price
-        self.quantity = quantity
+    print(category1.products)
 
+    product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
+    category1.add_product(product4)
+    print(category1.products)
+    print(category1.product_count)
 
-class Category:
-    """Класс категории товаров."""
+    new_product = Product.new_product(
+        {
+            "name": "Samsung Galaxy S23 Ultra",
+            "description": "256GB, Серый цвет, 200MP камера",
+            "price": 180000.0,
+            "quantity": 5,
+        }
+    )
+    print(new_product.name)
+    print(new_product.description)
+    print(new_product.price)
+    print(new_product.quantity)
 
-    name: str
-    description: str
-    products: list
+    new_product.price = 800
+    print(new_product.price)
 
-    category_count = 0
-    product_count = 0
+    new_product.price = -100
+    print(new_product.price)
 
-    def __init__(self, name, description, products):
-        self.name = name
-        self.description = description
-        self.products = products
-
-        Category.category_count += 1
-        Category.product_count += len(products)
+    new_product.price = 0
+    print(new_product.price)
