@@ -29,11 +29,40 @@
 python main.py      # демонстрация работы классов
 pytest              # тесты
 pytest --cov=src --cov-report=term-missing    # тесты с отчётом о покрытии
+```
 
 ## Покрытие тестами
 
 Покрытие кода — 100%:
-    Name              Stmts   Miss  Cover
-    -------------------------------------
-    src\category.py      18      0   100%
-    src\product.py       17      0   100%
+
+| Файл             | Stmts | Miss | Cover |
+|------------------|-------|------|-------|
+| src/category.py  | 18    | 0    | 100%  |
+| src/product.py   | 17    | 0    | 100%  |
+| **Итого**        | **35**| **0**| **100%** |
+
+Отчёт о запуске тестов с покрытием (файл coverage_report.txt):
+
+```
+============================= test session starts =============================
+platform win32 -- Python 3.15.0, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\user\Desktop\Пайтон\ООП\Homework
+configfile: pyproject.toml
+plugins: cov-7.1.0
+collected 8 items
+
+tests\test_category.py ....                                              [ 50%]
+tests\test_product.py ....                                               [100%]
+
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.15.0-final-0 _______________
+
+Name              Stmts   Miss  Cover   Missing
+-----------------------------------------------
+src\__init__.py       0      0   100%
+src\category.py      18      0   100%
+src\product.py       17      0   100%
+-----------------------------------------------
+TOTAL                35      0   100%
+============================== 8 passed in 0.04s ==============================
+```
