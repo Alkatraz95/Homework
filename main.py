@@ -1,35 +1,25 @@
-"""Модуль с классами Product и Category для домашнего задания 14.1."""
+"""Точка входа: демонстрация работы классов Product и Category."""
+
+from src.category import Category
+from src.product import Product
 
 
-class Product:
-    """Класс товара магазина."""
+if __name__ == "__main__":
+    product1 = Product(
+        name="Смартфон", description="Современный смартфон",
+        price=50000.0, quantity=10,
+    )
+    product2 = Product(
+        name="Ноутбук", description="Игровой ноутбук",
+        price=90000.0, quantity=5,
+    )
 
-    name: str
-    description: str
-    price: float
-    quantity: int
+    category = Category(
+        name="Электроника", description="Техника и гаджеты",
+        products=[product1, product2],
+    )
 
-    def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
-        self.price = price
-        self.quantity = quantity
-
-
-class Category:
-    """Класс категории товаров."""
-
-    name: str
-    description: str
-    products: list
-
-    category_count = 0
-    product_count = 0
-
-    def __init__(self, name, description, products):
-        self.name = name
-        self.description = description
-        self.products = products
-
-        Category.category_count += 1
-        Category.product_count += len(products)
+    print(category.name)
+    print(category.products[0].name)
+    counts = Category.category_count, Category.product_count
+    print(f"Категорий: {counts[0]}, товаров: {counts[1]}")
