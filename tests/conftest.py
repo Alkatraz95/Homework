@@ -1,14 +1,9 @@
+"""Фикстуры для тестов классов Product и Category."""
+
 import pytest
 
-from main import Category, Product
-
-
-@pytest.fixture(autouse=True)
-def reset_counters():
-    """Сбрасывает счётчики классов перед каждым тестом."""
-    Category.category_count = 0
-    Category.product_count = 0
-    yield
+from src.category import Category
+from src.product import Product
 
 
 @pytest.fixture
