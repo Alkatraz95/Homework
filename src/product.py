@@ -1,4 +1,4 @@
-"""Модуль с классом Product."""
+"""Модуль с классом Product и его наследниками."""
 
 
 class Product:
@@ -20,8 +20,10 @@ class Product:
 
     def __add__(self, other):
         """Возвращает полную стоимость товаров на складе двух объектов."""
-        if not isinstance(other, Product):
-            raise TypeError("Складывать можно только объекты класса Product")
+        if type(self) is not type(other):
+            raise TypeError(
+                "Складывать можно только товары из одинаковых классов продуктов"
+            )
         return self.__price * self.quantity + other.__price * other.quantity
 
     @classmethod
@@ -46,3 +48,26 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = new_price
+
+
+class Smartphone(Product):
+    """Класс смартфона: товар с производительностью, моделью, памятью и цветом."""
+
+    def __init__(self, name, description, price, quantity,
+                 efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    """Класс газонной травы: товар со страной-производителем и сроком прорастания."""
+
+    def __init__(self, name, description, price, quantity,
+                 country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
